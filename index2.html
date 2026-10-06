@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philippines Escapes - Multi-Neon Edition</title>
+
+    <style>
+        :root {
+            --bg-dark: #070d12;
+            --card-bg: rgba(14, 25, 36, 0.85);
+            --text-light: #e0f7fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        header {
+            min-height: 480px;
+            background: 
+                linear-gradient(rgba(7, 13, 18, 0.75), rgba(7, 13, 18, 0.85)),
+                url("C:\\Users\\student\\Pictures\\siargao.jpg") center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #00f3ff;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            color: #00f3ff;
+            text-shadow: 0 0 10px #00f3ff;
+        }
+
+        header h1 {
+            font-size: 52px;
+            margin: 0 0 15px;
+            color: #ffffff;
+            text-shadow: 0 0 15px #00f3ff;
+        }
+
+        header p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #b0bec5;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: transparent;
+            color: #00f3ff;
+            text-decoration: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 25px #00f3ff;
+        }
+
+        nav {
+            background: rgba(10, 19, 28, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.15);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline-block;
+        }
+
+        nav a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 18px 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(0, 243, 255, 0.1);
+            color: #00f3ff;
+            text-shadow: 0 0 8px #00f3ff;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 35px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.08);
+            text-align: center;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: #00f3ff;
+            font-size: 32px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+
+        section p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.7;
+            color: #b0bec5;
+        }
+
+        .destination-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .destination-title h2 {
+            font-size: 36px;
+            color: #ffffff;
+            text-shadow: 0 0 12px #00f3ff;
+            margin-bottom: 8px;
+        }
+
+        .destination-title p {
+            color: #78909c;
+        }
+
+        /* --- Unique Destination Neon Themes --- */
+        article#boracay {
+            --neon-color: #00f3ff;
+            --neon-glow: rgba(0, 243, 255, 0.4);
+            --border-color: rgba(0, 243, 255, 0.3);
+            --tag-bg: rgba(0, 243, 255, 0.1);
+        }
+
+        article#underground-river {
+            --neon-color: #39ff14;
+            --neon-glow: rgba(57, 255, 20, 0.4);
+            --border-color: rgba(57, 255, 20, 0.3);
+            --tag-bg: rgba(57, 255, 20, 0.1);
+        }
+
+        article#chocolate-hills {
+            --neon-color: #ffb700;
+            --neon-glow: rgba(255, 183, 0, 0.4);
+            --border-color: rgba(255, 183, 0, 0.3);
+            --tag-bg: rgba(255, 183, 0, 0.1);
+        }
+
+        article#mayon {
+            --neon-color: #ff4500;
+            --neon-glow: rgba(255, 69, 0, 0.4);
+            --border-color: rgba(255, 69, 0, 0.3);
+            --tag-bg: rgba(255, 69, 0, 0.1);
+        }
+
+        article#siargao {
+            --neon-color: #bf00ff;
+            --neon-glow: rgba(191, 0, 255, 0.4);
+            --border-color: rgba(191, 0, 255, 0.3);
+            --tag-bg: rgba(191, 0, 255, 0.1);
+        }
+
+        article {
+            background: var(--card-bg);
+            margin-bottom: 45px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--neon-glow);
+            border-color: var(--neon-color);
+        }
+
+        article h2 {
+            text-align: center;
+            color: var(--neon-color);
+            margin: 0;
+            padding: 25px 20px 5px;
+            font-size: 30px;
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        .rating {
+            text-align: center;
+            color: var(--neon-color);
+            font-size: 15px;
+            font-weight: bold;
+            margin: 7px 0 15px;
+            text-shadow: 0 0 5px var(--neon-glow);
+        }
+
+        figure {
+            margin: 0;
+            padding: 0 25px 15px;
+        }
+
+        article img {
+            width: 100%;
+            max-width: 650px;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            margin: 15px auto;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        figcaption {
+            text-align: center;
+            color: #78909c;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        article p {
+            line-height: 1.7;
+            color: #cfd8dc;
+            padding: 0 30px;
+        }
+
+        .tags {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--neon-color);
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            font-weight: bold;
+            padding: 7px 15px;
+            border-radius: 20px;
+            margin: 4px;
+            box-shadow: 0 0 5px var(--neon-glow);
+        }
+
+        .destination-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px 25px;
+            gap: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .location {
+            color: #78909c;
+            font-size: 14px;
+        }
+
+        .book-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--neon-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid var(--neon-color);
+            box-shadow: 0 0 10px var(--neon-glow);
+            transition: 0.3s;
+        }
+
+        .book-button:hover {
+            background: var(--neon-color);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-color);
+        }
+
+        footer {
+            background: #04080c;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 40px;
+            border-top: 2px solid #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        footer h3 {
+            margin-top: 0;
+            color: #00f3ff;
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+        }
+
+        footer p {
+            margin: 7px;
+            color: #78909c;
+        }
+
+        @media (max-width: 700px) {
+            header h1 { font-size: 36px; }
+            nav li { display: block; }
+            nav a { padding: 12px; }
+            main { padding: 25px 15px; }
+            section { padding: 25px 18px; }
+            article img { height: 220px; }
+            .destination-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="hero-content">
+            <div class="logo">PHILIPPINES ESCAPES</div>
+            <h1>Discover the Philippines</h1>
+            <p>
+                Find beautiful beaches, breathtaking landscapes, and unforgettable
+                destinations for your next adventure.
+            </p>
+            <a href="#destinations" class="hero-button">
+                Explore Destinations
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Home</a></li>
+            <li><a href="#boracay">Boracay</a></li>
+            <li><a href="#underground-river">Underground River</a></li>
+            <li><a href="#chocolate-hills">Chocolate Hills</a></li>
+            <li><a href="#mayon">Mayon Volcano</a></li>
+            <li><a href="#siargao">Siargao</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Welcome to the Philippines</h2>
+            <p>
+                Explore some of the country's most beautiful destinations.
+                From relaxing beaches to incredible natural wonders, the
+                Philippines offers unforgettable experiences for every traveler.
+            </p>
+        </section>
+
+        <div class="destination-title" id="destinations">
+            <h2>Featured Destinations</h2>
+            <p>Explore five amazing places around the Philippines with unique neon aesthetics.</p>
+        </div>
+
+        <!-- 1. BORACAY (Neon Cyan) -->
+        <article id="boracay">
+            <h2>Boracay</h2>
+            <div class="rating">★★★★★ Popular Beach Destination</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\boracay.jpg" alt="White sand beach with clear blue water and palm trees in Boracay">
+                <figcaption>
+                    Boracay's White Beach is famous for its soft white sand and clear water.
+                </figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Beach</span>
+                <span class="tag">Island</span>
+                <span class="tag">Relaxation</span>
+            </div>
+
+            <p>
+                Boracay is a popular island destination in the Philippines known
+                for White Beach, beautiful sunsets, and clear turquoise waters.
+                Visitors can enjoy swimming, island hopping, and other beach
+                activities.
+            </p>
+            <p>
+                The island also offers many hotels, restaurants, and activities,
+                making it a great place for travelers looking for a relaxing
+                beach vacation.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Aklan, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/boracay-unveiling-the-enchanting-paradise-of-the-philippines/231577" class="book-button" target="_blank" rel="noopener noreferrer">View Destination</a>
+            </div>
+        </article>
+
+        <!-- 2. UNDERGROUND RIVER (Neon Lime Green) -->
+        <article id="underground-river">
+            <h2>Puerto Princesa Underground River</h2>
+            <div class="rating">★★★★★ Natural Wonder</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\Underground.jpg" alt="Small boat traveling through a dark limestone cave along an underground river">
+                <figcaption>
+                    The Puerto Princesa Underground River passes through a remarkable limestone cave.
+                </figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Nature</span>
+                <span class="tag">Adventure</span>
+                <span class="tag">Palawan</span>
+            </div>
+
+            <p>
+                Located in Palawan, the Puerto Princesa Subterranean River is
+                known for its underground river and impressive limestone cave
+                formations. It is one of the country's most famous natural
+                attractions.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Palawan, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/activities/philippines/product/3-in-1-adventure-day-tour-in-sabang-puerto-princesa-underground-river-zipline-ride-and-mangrove-paddle-boat-palawan-5104040972042" class="book-button" target="_blank" rel="noopener noreferrer">View Destination</a>
+            </div>
+        </article>
+
+        <!-- 3. CHOCOLATE HILLS (Neon Amber Gold) -->
+        <article id="chocolate-hills">
+            <h2>Chocolate Hills</h2>
+            <div class="rating">★★★★★ Bohol Landmark</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\ChocolateHills.jpg" alt="Rows of cone-shaped hills across the landscape of Bohol">
+                <figcaption>
+                    The Chocolate Hills are a famous natural landmark in Bohol.
+                </figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Nature</span>
+                <span class="tag">Sightseeing</span>
+                <span class="tag">Bohol</span>
+            </div>
+
+            <p>
+                The Chocolate Hills in Bohol consist of many cone-shaped hills
+                spread across the landscape. During the dry season, the grass
+                covering the hills turns brown, giving them their chocolate-like
+                appearance.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Bohol, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/chocolate-hills/1004318" class="book-button" target="_blank" rel="noopener noreferrer">View Destination</a>
+            </div>
+        </article>
+
+        <!-- 4. MAYON VOLCANO (Neon Fire Orange) -->
+        <article id="mayon">
+            <h2>Mayon Volcano</h2>
+            <div class="rating">★★★★★ Scenic Mountain Destination</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\mayon.jpg" alt="Tall symmetrical cone-shaped Mayon Volcano in Albay">
+                <figcaption>
+                    Mayon Volcano is famous for its nearly perfect cone shape.
+                </figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Mountain</span>
+                <span class="tag">Nature</span>
+                <span class="tag">Albay</span>
+            </div>
+
+            <p>
+                Mayon Volcano is located in Albay and is well known for its
+                symmetrical shape. Its impressive appearance makes it one of
+                the most recognizable natural landmarks in the Philippines.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Albay, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/mayon-volcano/1004320" class="book-button" target="_blank" rel="noopener noreferrer">View Destination</a>
+            </div>
+        </article>
+
+        <!-- 5. SIARGAO (Electric Neon Purple) -->
+        <article id="siargao">
+            <h2>Siargao</h2>
+            <div class="rating">★★★★★ Surfing Paradise</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\siargao.jpg" alt="Ocean waves and tropical scenery on Siargao Island">
+                <figcaption>
+                    Siargao is widely known for surfing and its beautiful island scenery.
+                </figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Surfing</span>
+                <span class="tag">Beach</span>
+                <span class="tag">Island</span>
+            </div>
+
+            <p>
+                Siargao is a popular island destination famous for surfing,
+                especially at Cloud 9. It also offers beautiful lagoons,
+                beaches, and island-hopping experiences for visitors.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Surigao del Norte, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/tips/guides-siargao-first-timer/64292" class="book-button" target="_blank" rel="noopener noreferrer">View Destination</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <h3>Philippines Escapes</h3>
+        <p>Explore the paradise of 7,000+ islands.</p>
+    </footer>
+
+</body>
+</html>
