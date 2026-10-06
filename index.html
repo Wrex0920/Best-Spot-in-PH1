@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philippines Escapes — Cyber Neon Edition</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --card-bg: rgba(13, 22, 35, 0.75);
+            --text-light: #f3f4f6;
+            --text-muted: #94a3b8;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00f3ff;
+            border-radius: 4px;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cyberpunk Background Grid Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 550px;
+            background: 
+                radial-gradient(circle at 50% 20%, rgba(0, 243, 255, 0.15), transparent 60%),
+                linear-gradient(rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.95)),
+                url("https://images.unsplash.com/photo-1518509565180-87747863f538?q=80&w=1920&auto=format&fit=crop") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.15);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(36px, 6vw, 64px);
+            margin: 0 0 20px;
+            color: #ffffff;
+            text-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+            font-weight: 900;
+        }
+
+        header p {
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.7;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #00f3ff;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .hero-button:hover {
+            background: #00f3ff;
+            color: #030712;
+            box-shadow: 0 0 35px #00f3ff, 0 0 70px rgba(0, 243, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Sticky Navigation Bar */
+        nav {
+            background: rgba(3, 7, 18, 0.85);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 20px 18px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00f3ff;
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover {
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        /* Intro Section */
+        section#intro {
+            background: var(--card-bg);
+            padding: 50px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+
+        section#intro h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 0;
+            color: #00f3ff;
+            font-size: clamp(28px, 4vw, 38px);
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        section#intro p {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        /* Interactive Filter Bar */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .filter-container h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(30px, 4vw, 40px);
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            margin-bottom: 10px;
+        }
+
+        .filter-container p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(0, 243, 255, 0.15);
+            border-color: #00f3ff;
+            color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Unique Destination Neon Themes */
+        article#boracay {
+            --neon-color: #00f3ff;
+            --neon-glow: rgba(0, 243, 255, 0.35);
+            --border-color: rgba(0, 243, 255, 0.3);
+            --tag-bg: rgba(0, 243, 255, 0.1);
+        }
+
+        article#underground-river {
+            --neon-color: #39ff14;
+            --neon-glow: rgba(57, 255, 20, 0.35);
+            --border-color: rgba(57, 255, 20, 0.3);
+            --tag-bg: rgba(57, 255, 20, 0.1);
+        }
+
+        article#chocolate-hills {
+            --neon-color: #ffb700;
+            --neon-glow: rgba(255, 183, 0, 0.35);
+            --border-color: rgba(255, 183, 0, 0.3);
+            --tag-bg: rgba(255, 183, 0, 0.1);
+        }
+
+        article#mayon {
+            --neon-color: #ff3366;
+            --neon-glow: rgba(255, 51, 102, 0.35);
+            --border-color: rgba(255, 51, 102, 0.3);
+            --tag-bg: rgba(255, 51, 102, 0.1);
+        }
+
+        article#siargao {
+            --neon-color: #bf00ff;
+            --neon-glow: rgba(191, 0, 255, 0.35);
+            --border-color: rgba(191, 0, 255, 0.3);
+            --tag-bg: rgba(191, 0, 255, 0.1);
+        }
+
+        article {
+            background: var(--card-bg);
+            margin-bottom: 45px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: var(--transition);
+            backdrop-filter: blur(14px);
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px var(--neon-glow);
+            border-color: var(--neon-color);
+        }
+
+        article h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            color: var(--neon-color);
+            margin: 0;
+            padding: 35px 20px 10px;
+            font-size: clamp(24px, 3.5vw, 34px);
+            text-shadow: 0 0 15px var(--neon-glow);
+        }
+
+        .rating {
+            text-align: center;
+            color: var(--neon-color);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 20px;
+            text-shadow: 0 0 8px var(--neon-glow);
+        }
+
+        figure {
+            margin: 0;
+            padding: 0 35px;
+        }
+
+        article img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            transition: var(--transition);
+        }
+
+        article:hover img {
+            transform: scale(1.02);
+        }
+
+        figcaption {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        article p {
+            line-height: 1.8;
+            color: #cbd5e1;
+            padding: 0 45px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            text-align: center;
+            margin: 20px 0;
+            padding: 0 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--neon-color);
+            border: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin: 4px;
+            box-shadow: 0 0 8px var(--neon-glow);
+            letter-spacing: 0.5px;
+        }
+
+        .destination-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px 45px 35px;
+            gap: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .location {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .book-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--neon-color);
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--neon-color);
+            box-shadow: 0 0 12px var(--neon-glow);
+            transition: var(--transition);
+        }
+
+        .book-button:hover {
+            background: var(--neon-color);
+            color: #030712;
+            box-shadow: 0 0 25px var(--neon-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #010409;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            border-top: 2px solid #00f3ff;
+            box-shadow: 0 -10px 30px rgba(0, 243, 255, 0.2);
+        }
+
+        footer h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 0;
+            color: #00f3ff;
+            text-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+            font-size: 24px;
+        }
+
+        footer p {
+            margin: 10px 0 0;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav li { display: block; width: 100%; text-align: center; }
+            nav a { padding: 14px; }
+            main { padding: 30px 15px; }
+            section#intro { padding: 30px 20px; }
+            figure { padding: 0 15px; }
+            article img { height: 240px; }
+            article p { padding: 0 20px; }
+            .destination-bottom {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="hero-content">
+            <div class="logo">PHILIPPINES ESCAPES // MULTI-NEON V2</div>
+            <h1>Discover the Philippines</h1>
+            <p>
+                Immerse yourself in breathtaking destinations, vibrant neon aesthetics, and unforgettable tropical getaways across the archipelago.
+            </p>
+            <a href="#destinations" class="hero-button">
+                <span>Explore Destinations</span> ⚡
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Home</a></li>
+            <li><a href="#boracay">Boracay</a></li>
+            <li><a href="#underground-river">Underground River</a></li>
+            <li><a href="#chocolate-hills">Chocolate Hills</a></li>
+            <li><a href="#mayon">Mayon Volcano</a></li>
+            <li><a href="#siargao">Siargao</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Welcome to the Archipelago</h2>
+            <p>
+                From powdery white sand beaches and subterranean wonders to cone-shaped volcanoes and world-class surfing breaks, explore the pinnacle of tropical paradise redefined with high-end cyberpunk design.
+            </p>
+        </section>
+
+        <div class="filter-container" id="destinations">
+            <h2>Featured Destinations</h2>
+            <p>Select a category or browse through our hand-picked neon showcases.</p>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Places</button>
+                <button class="filter-btn" data-filter="Beach">Beaches & Islands</button>
+                <button class="filter-btn" data-filter="Nature">Nature & Caves</button>
+                <button class="filter-btn" data-filter="Mountain">Mountains & Volcanoes</button>
+                <button class="filter-btn" data-filter="Surfing">Surfing</button>
+            </div>
+        </div>
+
+        <!-- 1. BORACAY (Neon Cyan) -->
+        <article id="boracay" class="destination-card" data-categories="Beach Island Relaxation">
+            <h2>Boracay</h2>
+            <div class="rating">★★★★★ POPULAR BEACH DESTINATION</div>
+            
+            <figure>
+                <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?q=80&w=1200&auto=format&fit=crop" alt="White sand beach with clear blue water and palm trees in Boracay">
+                <figcaption>Boracay's White Beach is world-famous for crystal-clear waters and powdery white sand.</figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Beach</span>
+                <span class="tag">Island</span>
+                <span class="tag">Relaxation</span>
+            </div>
+
+            <p>
+                Boracay is a premier island destination known for its immaculate White Beach, spectacular sunsets, and vibrant turquoise waters. Visitors can indulge in serene beachfront lounging, vibrant nightlife, and endless water sports.
+            </p>
+            <p>
+                With world-class resorts and dining spots, it stands as the ultimate getaway for travelers craving a flawless tropical retreat.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Aklan, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/boracay-unveiling-the-enchanting-paradise-of-the-philippines/231577" class="book-button" target="_blank" rel="noopener noreferrer">View Destination ➔</a>
+            </div>
+        </article>
+
+        <!-- 2. UNDERGROUND RIVER (Neon Lime Green) -->
+        <article id="underground-river" class="destination-card" data-categories="Nature Adventure Palawan">
+            <h2>Puerto Princesa Underground River</h2>
+            <div class="rating">★★★★★ NATURAL WONDER</div>
+            
+            <figure>
+                <img src="C:\Users\student\Pictures\Underground.jpg" alt="Limestone cave along an underground river in Palawan">
+                <figcaption>Navigating the mystical limestone chambers of the Puerto Princesa Subterranean River.</figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Nature</span>
+                <span class="tag">Adventure</span>
+                <span class="tag">Palawan</span>
+            </div>
+
+            <p>
+                Nestled in Palawan, this UNESCO World Heritage Site features a spectacular navigable river that flows directly underneath a massive mountain range, winding through mystical stalactite and stalagmite caverns.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Palawan, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/activities/philippines/product/3-in-1-adventure-day-tour-in-sabang-puerto-princesa-underground-river-zipline-ride-and-mangrove-paddle-boat-palawan-5104040972042" class="book-button" target="_blank" rel="noopener noreferrer">View Destination ➔</a>
+            </div>
+        </article>
+
+        <!-- 3. CHOCOLATE HILLS (Neon Amber Gold) -->
+        <article id="chocolate-hills" class="destination-card" data-categories="Nature Sightseeing Bohol">
+            <h2>Chocolate Hills</h2>
+            <div class="rating">★★★★★ BOHOL LANDMARK</div>
+            
+            <figure>
+                <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=1200&auto=format&fit=crop" alt="Cone-shaped hills across the landscape of Bohol">
+                <figcaption>The surreal undulating landscape of the Chocolate Hills in Bohol.</figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Nature</span>
+                <span class="tag">Sightseeing</span>
+                <span class="tag">Bohol</span>
+            </div>
+
+            <p>
+                The Chocolate Hills of Bohol comprise over 1,000 symmetrical cone-shaped mounds spread across the plains. During the dry season, lush green vegetation turns a rich chocolate brown, creating one of Earth's most unique geological phenomena.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Bohol, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/chocolate-hills/1004318" class="book-button" target="_blank" rel="noopener noreferrer">View Destination ➔</a>
+            </div>
+        </article>
+
+        <!-- 4. MAYON VOLCANO (Neon Fire Red/Pink) -->
+        <article id="mayon" class="destination-card" data-categories="Mountain Nature Albay">
+            <h2>Mayon Volcano</h2>
+            <div class="rating">★★★★★ SCENIC MOUNTAIN DESTINATION</div>
+            
+            <figure>
+                <img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?q=80&w=1200&auto=format&fit=crop" alt="Symmetrical cone-shaped Mayon Volcano in Albay">
+                <figcaption>Mayon Volcano is celebrated worldwide for its breathtaking near-perfect symmetry.</figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Mountain</span>
+                <span class="tag">Nature</span>
+                <span class="tag">Albay</span>
+            </div>
+
+            <p>
+                Rising majestically in Albay province, Mayon Volcano is renowned for its iconic, flawless cone shape. Its dramatic silhouette makes it one of the most mesmerizing and photographed volcanic masterpieces on the planet.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Albay, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/destination/mayon-volcano/1004320" class="book-button" target="_blank" rel="noopener noreferrer">View Destination ➔</a>
+            </div>
+        </article>
+
+        <!-- 5. SIARGAO (Electric Neon Purple) -->
+        <article id="siargao" class="destination-card" data-categories="Surfing Beach Island">
+            <h2>Siargao</h2>
+            <div class="rating">★★★★★ SURFING PARADISE</div>
+            
+            <figure>
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1200&auto=format&fit=crop" alt="Ocean waves and tropical scenery on Siargao Island">
+                <figcaption>Siargao combines epic reef breaks like Cloud 9 with laid-back island culture.</figcaption>
+            </figure>
+
+            <div class="tags">
+                <span class="tag">Surfing</span>
+                <span class="tag">Beach</span>
+                <span class="tag">Island</span>
+            </div>
+
+            <p>
+                Siargao is the surfing capital of the Philippines, internationally famous for the legendary Cloud 9 wave break. Beyond surfing, the tear-drop shaped island offers crystal lagoons, mangrove forests, and pristine tidal pools.
+            </p>
+
+            <div class="destination-bottom">
+                <span class="location">📍 Surigao del Norte, Philippines</span>
+                <a href="https://www.traveloka.com/en-ph/explore/tips/guides-siargao-first-timer/64292" class="book-button" target="_blank" rel="noopener noreferrer">View Destination ➔</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <h3>PHILIPPINES ESCAPES</h3>
+        <p>Experience the paradise of 7,000+ islands through advanced futuristic design.</p>
+    </footer>
+
+    <!-- Interactive Filter Script -->
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const destinationCards = document.querySelectorAll('.destination-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                destinationCards.forEach(card => {
+                    const categories = card.getAttribute('data-categories');
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeIn 0.6s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
